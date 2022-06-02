@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-public class GameField {
+public abstract class GameField {
     public GameField(){
         createCells();
     }
@@ -128,11 +128,7 @@ public class GameField {
         return true;
     }
 
-    public boolean createNewBottomLine(){
-        moveBallsUp();
-        createLine(height -1);
-        return true;
-    }
+    public abstract boolean createNewBottomLine();
 
     /* --------------------------- Ball set ------------------------------ */
 

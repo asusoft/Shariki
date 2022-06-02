@@ -101,7 +101,7 @@ public class BallTest {
 
     @Test
     void moveTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Cell centralCell = field.getCell(1, 1);
         Cell eastNeighbor = field.getCell(2, 1);
@@ -119,7 +119,7 @@ public class BallTest {
 
     @Test
     void moveToNonEmptyCell(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Cell centralCell = field.getCell(1, 1);
         Cell eastNeighbor = field.getCell(2, 1);

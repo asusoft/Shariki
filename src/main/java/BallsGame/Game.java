@@ -15,7 +15,7 @@ public class Game {
 
     public Game(){
         //gameField = new FieldWithoutVerifiedChains();
-        gameField = new GameField();
+        gameField = new FieldWithVerifiedChains();
         gameField.fillCells();
     }
 
@@ -38,6 +38,7 @@ public class Game {
 
     public void timeOut(){
         if (!gameField.isGameOver()){
+            gameField.moveBallsUp();
            gameField.createNewBottomLine();
             this.score = gameField.getScore();
         }

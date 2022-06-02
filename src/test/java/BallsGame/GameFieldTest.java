@@ -13,7 +13,7 @@ public class GameFieldTest {
 
     @Test
     void initialization(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Assertions.assertNotNull(field.getCell(0, 0));
         Assertions.assertNotNull(field.getCell(7, 16));
@@ -24,7 +24,7 @@ public class GameFieldTest {
     @Test
     void getNeighborTest(){
 
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Cell centralCell = field.getCell(1, 1);
         Cell eastNeighbor = field.getCell(2, 1);
@@ -42,7 +42,7 @@ public class GameFieldTest {
     @Test
     void getNeighborNull(){
 
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Cell centralCell = field.getCell(0, 0);
 
@@ -51,7 +51,7 @@ public class GameFieldTest {
 
     @Test
     void createLineTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
         int row = 4;
 
         Assertions.assertTrue(field.createLine(row));
@@ -64,7 +64,7 @@ public class GameFieldTest {
 
     @Test
     void createLineNonEmptyRow(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
         field.fillCells();
         int row = field.Height() - 1;
 
@@ -73,7 +73,7 @@ public class GameFieldTest {
 
     @Test
     void getBallSetTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
 
         Cell targetCell = field.getCell(6,17);
@@ -113,7 +113,7 @@ public class GameFieldTest {
 
     @Test
     void getBallSetNull(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Cell targetCell = field.getCell(6,17);
         Cell newCell1 = targetCell.getNeighbor(Direction.NORTH);
@@ -144,7 +144,7 @@ public class GameFieldTest {
 
     @Test
     void fillCellsTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         Assertions.assertEquals(0, field.balls().size());
 
@@ -162,7 +162,7 @@ public class GameFieldTest {
 
     @Test
     void createNewBottomLineTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
 
         field.fillCells();
 
@@ -173,6 +173,7 @@ public class GameFieldTest {
             Assertions.assertTrue(cell.isEmpty());
         }
 
+        field.moveBallsUp();
         field.createNewBottomLine();
 
         Assertions.assertEquals(60, field.balls().size());
@@ -185,7 +186,7 @@ public class GameFieldTest {
 
     @Test
     void isGameOverTrue(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
         Random random = new Random();
         Color colors[] = { Color.BLUE, Color.GREEN, Color.YELLOW, Color.RED, Color.WHITE };
         int colorSelector = random.nextInt(colors.length);
@@ -207,7 +208,7 @@ public class GameFieldTest {
 
     @Test
     void isGameOverFalse(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
         field.fillCells();
 
         Assertions.assertFalse(field.isGameOver());
@@ -215,7 +216,7 @@ public class GameFieldTest {
 
     @Test
     void deleteBallSetTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
         for(int row = 15; row < STANDARD_FIELD_HEIGHT; ++row){
             for(int column = 0; column < STANDARD_FIELD_WIDTH; ++column){
                 Cell cell = field.getCell(column, row);
@@ -273,7 +274,7 @@ public class GameFieldTest {
 
     @Test
     void takeBallsDownTest(){
-        GameField field = new GameField();
+        GameField field = new FieldWithVerifiedChains();
         field.fillCells();
 
         Cell targetCell = field.getCell(6,17);
