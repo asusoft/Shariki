@@ -13,8 +13,8 @@ import java.awt.*;
 public class CellWidget extends JPanel {
     private static final int CELL_SIZE = 30;
     private static final int FONT_HEIGHT = 15;
-    int panelWidth;
-    int panelHeight;
+    private int panelWidth;
+    private int panelHeight;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
     private static final Color GRID_COLOR = Color.LIGHT_GRAY;
 
